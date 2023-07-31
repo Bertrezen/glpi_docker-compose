@@ -1,6 +1,5 @@
 FROM debian:buster
 #FROM debian:stretch
-MAINTAINER Sergey Ershov "ershovu@gmail.com"
 
 ENV DEBIAN_FRONTEND noninteractive
 
