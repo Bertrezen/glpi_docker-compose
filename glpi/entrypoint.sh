@@ -42,28 +42,28 @@ chown www-data:crontab /var/spool/cron/crontabs/www-data
 ## php - тюнинг
 echo "ServerName localhost" >> /etc/apache2/apache2.conf
 #sed -i "s|^upload_max_filesize .*|upload_max_filesize = $GLPI_upload_max_filesize|" /etc/php/7.0/apache2/php.ini
-sed -i "s|^upload_max_filesize .*|upload_max_filesize = $GLPI_upload_max_filesize|" /etc/php/7.3/apache2/php.ini
+sed -i "s|^upload_max_filesize .*|upload_max_filesize = $GLPI_upload_max_filesize|" /etc/php/8.2/apache2/php.ini
 #sed -i "s|^post_max_size .*|post_max_size = $GLPI_post_max_size|" /etc/php/7.0/apache2/php.ini
-sed -i "s|^post_max_size .*|post_max_size = $GLPI_post_max_size|" /etc/php/7.3/apache2/php.ini
+sed -i "s|^post_max_size .*|post_max_size = $GLPI_post_max_size|" /etc/php/8.2/apache2/php.ini
 #sed -i "s|^memory_limit .*|memory_limit = $GLPI_memory_limit|" /etc/php/7.0/apache2/php.ini
-sed -i "s|^memory_limit .*|memory_limit = $GLPI_memory_limit|" /etc/php/7.3/apache2/php.ini
+sed -i "s|^memory_limit .*|memory_limit = $GLPI_memory_limit|" /etc/php/8.2/apache2/php.ini
 #sed -i "s|^max_execution_time .*|max_execution_time = $GLPI_max_execution_time|" /etc/php/7.0/apache2/php.ini
-sed -i "s|^max_execution_time .*|max_execution_time = $GLPI_max_execution_time|" /etc/php/7.3/apache2/php.ini
+sed -i "s|^max_execution_time .*|max_execution_time = $GLPI_max_execution_time|" /etc/php/8.2/apache2/php.ini
 # enable apc
 #echo 'apc.enable = 1' > /etc/php/7.0/cli/conf.d/enable-apc-cli.ini
-echo 'apc.enable = 1' > /etc/php/7.3/cli/conf.d/enable-apc-cli.ini
+echo 'apc.enable = 1' > /etc/php/8.2/cli/conf.d/enable-apc-cli.ini
 #echo 'apc.enable_cli = 1' >> /etc/php/7.0/cli/conf.d/enable-apc-cli.ini
-echo 'apc.enable_cli = 1' >> /etc/php/7.3/cli/conf.d/enable-apc-cli.ini
+echo 'apc.enable_cli = 1' >> /etc/php/8.2/cli/conf.d/enable-apc-cli.ini
 
 
 
 ## Zend OPcache - тюнинг
 #echo "opcache.memory_consumption = 256" >> /etc/php/7.0/mods-available/opcache.ini
-echo "opcache.memory_consumption = 256" >> /etc/php/7.3/mods-available/opcache.ini
+echo "opcache.memory_consumption = 256" >> /etc/php/8.2/mods-available/opcache.ini
 
 ## тюнниг
 #echo "apc.shm_size=64M" >> /etc/php/7.0/mods-available/apcu.ini
-echo "apc.shm_size=64M" >> /etc/php/7.3/mods-available/apcu.ini
+echo "apc.shm_size=64M" >> /etc/php/8.2/mods-available/apcu.ini
 
 ## IPv6 enable
 sysctl net.ipv6.conf.all.disable_ipv6=0

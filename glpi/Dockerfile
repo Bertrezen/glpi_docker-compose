@@ -9,6 +9,9 @@ ENTRYPOINT ["/opt/entrypoint.sh"]
 RUN cd /tmp/ \
   && apt-get update -qqy \
   && apt-get upgrade -qqy \
+  && apt-get install -y wget gnupg2 lsb-release \
+  && wget https://packages.sury.org/php/apt.gpg && apt-key add apt.gpg \
+  && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
 # локаль
   && apt-get install -yqq  --no-install-recommends --no-install-suggests locales apt-utils
 
@@ -22,26 +25,26 @@ RUN cd /tmp/ \
   && apt-get update -qqy \
   && apt-get -y install \
     apache2 \
-    php \
-    php-mysql \
-    php-ldap \
-    php-xmlrpc \
-    php-imap \
+    php8.2 \
+    php8.2-mysql \
+    php8.2-ldap \
+    php8.2-xmlrpc \
+    php8.2-imap \
     curl \
-    php-curl \
-    php-gd \
-    php-mbstring \
-    php-xml \
-    php-apcu-bc \
-    php-cas \
-    php-zip \
+    php8.2-curl \
+    php8.2-gd \
+    php8.2-mbstring \
+    php8.2-xml \
+#    php8.2-apcu-bc \
+#    php8.2-cas \
+    php8.2-zip \
     cron \
     rsyslog \
     wget \
     graphviz \
-    php-snmp \
-    php-intl \
-    php-bz2
+    php8.2-snmp \
+    php8.2-intl \
+    php8.2-bz2
 RUN cd /tmp/ \
 #    miredo \
 #  && echo "deb http://debian.fusioninventory.org/debian/ jessie main" >> /etc/apt/sources.list.d/fusioninventory.list \
