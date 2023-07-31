@@ -1,0 +1,29 @@
+version: '2'
+services:
+  linuxserver-letsencrypt:
+    image: linuxserver/letsencrypt
+    container_name: "${GLPI_NAME}_letsencrypt"
+    hostname: letsencrypt
+    ports:
+      - "${LETS_HTTP_IP_PORT}:80"
+      - "${LETS_HTTPS_IP_PORT}:443"
+# следующие 2 строки необходимы при использовании fail2ban
+    cap_add:
+     - NET_ADMIN
+    restart: on-failure:3
+    volumes:
+      - ${GLPI_PATH}/letsencrypt/config:/config
+    depends_on:
+      - glpi
+    environment:
+      - EMAIL=${LETS_EMAIL}
+      - URL=${LETS_URL}
+      - SUBDOMAINS=${LETS_SUBDOMAIN}
+      - EXTRA_DOMAINS=${EXTRA_DOMAINS}
+      - ONLY_SUBDOMAINS=true
+      - VALIDATION=http
+      - TZ=Europe/Moscow
+      - PGID=abc
+      - PUID=abc
+   # - STAGING=true # использовать тестовый сервер(для отладки), на тестовом сервере нет ограничения по попыткам получения сертификатов
+
